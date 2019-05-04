@@ -1,0 +1,16 @@
+<h1>Ripai#before</h1>
+<p>Find me in app/views/ripai/before.html.erb</p>
+<p>
+<% new_pais.each do |i| %>
+<%= i %>
+<% end %>
+</p>
+
+
+<%= form_tag('/ripai/after', :method => :post) do %>
+  <% sorted_pais.each_with_index do |pai, index|%>
+
+    <input name='ripai[sorted_pais][<%= index %>]' type='hidden' value='<%= pai %>'>
+  <% end %>
+  <%= submit_tag('送信') %>
+<% end %>
