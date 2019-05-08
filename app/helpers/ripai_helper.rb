@@ -42,6 +42,7 @@ module RipaiHelper
     '中', '中', '中', '中',
     ]
 
+
     selected_pais_number = (1..136).to_a.sample(13)
     selected_pais = []
     selected_pais_number.each do |i|
@@ -51,6 +52,12 @@ module RipaiHelper
     @selected_pais = selected_pais
     selected_pais
   end
+@pais_list = [
+  '一','二','三','四','五','六','七','八','九',
+  'Ⅰ','Ⅱ','Ⅲ','Ⅳ','Ⅴ','Ⅵ','Ⅶ','Ⅷ','Ⅸ',
+  "①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨",
+  "東", "南", "西", "北", "白", "發", "中"
+]
   def sorted_pais
 
     selected_pais = []

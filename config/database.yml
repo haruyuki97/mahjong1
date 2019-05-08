@@ -1,26 +1,20 @@
-development:
+default: &default
   adapter: postgresql
-  encoding: utf8
-  database: project_development
-  pool: 5
-  username:
-  password:
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-test: &TEST
-  adapter: postgresql
-  encoding: utf8
-  database: project_test
-  pool: 5
-  username:
-  password:
+development:
+  <<: *default
+  database: mahjong1_development
+
+test:
+  <<: *default
+  database: mahjong1_test
 
 production:
-  adapter: postgresql
-  encoding: utf8
-  database: project_production
-  pool: 5
-  username:
-  password:
-
-cucumber:
-  <<: *TEST
+  <<: *default
+  database: mahjong1_production
+  username: mahjong1
+  password: <%= ENV['MAHJONG1_DATABASE_PASSWORD'] %>

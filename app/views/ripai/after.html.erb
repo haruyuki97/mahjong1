@@ -5,6 +5,19 @@
 <%= @pais["#{i}"] %>
 <% end %>
 
-
-
 </p>
+<% @hand_pais = [] %>
+<% (0..12).each do |i| %>
+  <% @hand_pais << @pais["#{i}"] %>
+<% end %>
+
+<p>hand_pais</p>
+<%= @hand_pais %>
+
+<p>sorted_hand_pais</p>
+<%
+hand_pais = @hand_pais.sort_by do |pai|
+  @hand_pais.index pai
+end
+%>
+<%= hand_pais %>
