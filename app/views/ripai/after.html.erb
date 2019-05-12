@@ -1,23 +1,24 @@
 <h1>Ripai#after</h1>
 <p>Find me in app/views/ripai/after.html.erb</p>
-<p>
 <% (0..13).each do |i| %>
-<%= @pais["#{i}"] %>
+<% @pais["#{i}"] %>
 <% end %>
 
-</p>
 <% @hand_pais = [] %>
 <% (0..12).each do |i| %>
-  <% @hand_pais << @pais["#{i}"] %>
+<% @hand_pais << @pais["#{i}"] %>
 <% end %>
 
-<p>hand_pais</p>
-<%= @hand_pais %>
-
-<p>sorted_hand_pais</p>
+<p>
 <%
 hand_pais = @hand_pais.sort_by do |pai|
-  @hand_pais.index pai
+  id_pais.index pai
 end
 %>
-<%= hand_pais %>
+<%
+hand_pais_instance_array = hand_pais.map{|id| id2pai id}
+hand_pais_instance_array.each do |pai|
+%>
+<%= image_tag pai.img %>
+<% end %>
+</p>

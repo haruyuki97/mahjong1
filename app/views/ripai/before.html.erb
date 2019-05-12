@@ -1,19 +1,38 @@
-<h1>Ripai#before</h1>
-<p>Find me in app/views/ripai/before.html.erb</p>
-<p>
-<% new_pais.each do |i| %>
-<%= i %>
-<% end %>
-
-</p>
-
-
-<%= form_tag('/ripai/after', :method => :post) do %>
-  <% sorted_pais.each_with_index do |pai, index|%>
-
-    <input name='ripai[sorted_pais][<%= index %>]' type='hidden' value='<%= pai %>'>
+<div class = 'container'>
+  <h1>Ripai#before</h1>
+  <p>Find me in app/views/ripai/before.html.erb</p>
+  <p>
+  <%
+  #{ "id", Paiクラスのインスタンス }というハッシュの作成
+  id_instance_hash = id.map.with_index {|id, i| [id, Pai.new(id, img[i])]}.to_h
+  %>
+  <% generate_random_id.each do |id| %>
+  <%= image_tag id_instance_hash[id].img %>
   <% end %>
-  <!-- <button type="button" name="button" class='btn btn-primary'>理牌</button> -->
-  <%= submit_tag '理牌', class: 'btn btn-primary' %>
-  <a href="#" class='btn btn-success'>更新</a>
-<% end %>
+
+  </p>
+
+  <div class="container">
+    <%= form_tag('/ripai/after', :method => :post) do %>
+    <% @selected_pais.each_with_index do |pai, index|%>
+
+    <input name='ripai[selected_pais][<%= index %>]' type='hidden' value='<%= pai %>'>
+    <% end %>
+    <!-- <button type="button" name="button" class='btn btn-primary'>理牌</button> -->
+    <%= submit_tag '理牌', class: 'btn btn-primary' %>
+    <a href="#" class='btn btn-success'>更新</a>
+    <% end %>
+
+  </div>
+
+  <div class="container">
+    <h2>pais list</h2>
+    <% id_instance_hash.each do |key, value| %>
+    <%= key %>
+    <%= image_tag value.img %>
+    <% end %>
+
+  </div>
+
+
+</div>
