@@ -14,13 +14,11 @@
 
   <div class="container">
     <%= form_tag('/ripai/after', :method => :post) do %>
-    <% @selected_pais.each_with_index do |pai, index|%>
-
-    <input name='ripai[selected_pais][<%= index %>]' type='hidden' value='<%= pai %>'>
-    <% end %>
-    <!-- <button type="button" name="button" class='btn btn-primary'>理牌</button> -->
-    <%= submit_tag '理牌', class: 'btn btn-primary' %>
-    <a href="#" class='btn btn-success'>更新</a>
+      <% @selected_pais.each_with_index do |pai, index|%>
+        <input name='ripai[selected_pais][<%= index %>]' type='hidden' value='<%= pai %>'>
+      <% end %>
+      <%= submit_tag '理牌', class: 'btn btn-primary' %>
+      <a href="#" class='btn btn-success'>更新</a>
     <% end %>
 
   </div>
@@ -33,6 +31,7 @@
     <% end %>
 
   </div>
+
 
 
 </div>

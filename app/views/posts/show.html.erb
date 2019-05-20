@@ -1,0 +1,32 @@
+<h1>Posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p>
+<p>
+  name:
+  <%= @post.name %>
+</p>
+
+<p>
+  description:
+  <%= @post.description %>
+</p>
+
+<p>
+  pais:
+  <% unless @post.pais.nil? %>
+    <% @post.pais.split(',').each do |id| %>
+      <%= image_tag id2pai(id).img %>
+    <% end %>
+  <% else %>
+    <%= '牌のデータがありません。' %>
+  <% end %>
+</p>
+<p>
+  created_at:
+  <%= @post.created_at %>
+</p>
+<p>
+  updated_at:
+  <%= @post.updated_at %>
+</p>
+<%= link_to '編集', edit_post_path, class: 'btn btn-primary' %>
+<%= link_to '削除', @post, method: :delete, data: { confirm: "投稿「#{@post.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger' %>

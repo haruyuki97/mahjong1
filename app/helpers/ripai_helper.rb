@@ -68,7 +68,7 @@ module RipaiHelper
 
   def generate_random_id
 
-    selected_pais_number = (1..136).to_a.sample(13)
+    selected_pais_number = (0..135).to_a.sample(14)
     selected_pais = []
     selected_pais_number.each do |i|
       selected_pais << id_pais[i]
