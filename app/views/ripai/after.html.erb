@@ -12,11 +12,11 @@
 <p>
 <%
 hand_pais = @hand_pais.sort_by do |pai|
-  id_pais.index pai
+  @ps.id_pais.index pai
 end
 %>
 <%
-hand_pais_instance_array = hand_pais.map{|id| id2pai id}
+hand_pais_instance_array = hand_pais.map{|id| @ps.id2pai id}
 hand_pais_instance_array.each do |pai|
 %>
 <%= image_tag pai.img %>

@@ -4,9 +4,9 @@
   <p>
   <%
   #{ "id", Paiクラスのインスタンス }というハッシュの作成
-  id_instance_hash = id.map.with_index {|id, i| [id, Pai.new(id, img[i])]}.to_h
+  id_instance_hash = @ps.id.map.with_index {|id, i| [id, Pai.new(id, @ps.img[i])]}.to_h
   %>
-  <% generate_random_id.each do |id| %>
+  <% @ps.generate_random_id.each do |id| %>
   <%= image_tag id_instance_hash[id].img %>
   <% end %>
 
@@ -14,7 +14,7 @@
 
   <div class="container">
     <%= form_tag('/ripai/after', :method => :post) do %>
-      <% @selected_pais.each_with_index do |pai, index|%>
+      <% @ps.selected_pais.each_with_index do |pai, index|%>
         <input name='ripai[selected_pais][<%= index %>]' type='hidden' value='<%= pai %>'>
       <% end %>
       <%= submit_tag '理牌', class: 'btn btn-primary' %>

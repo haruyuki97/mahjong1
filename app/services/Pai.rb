@@ -1,5 +1,3 @@
-module RipaiHelper
-end
 class Pai
   attr_accessor :id, :img
   def initialize id, img
