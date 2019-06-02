@@ -1,12 +1,13 @@
 <div class = 'container'>
-  <h1>Ripai#before</h1>
-  <p>Find me in app/views/ripai/before.html.erb</p>
+  <h1>牌生成画面</h1>
+  <p>「理牌」をクリックすると、牌を並べ替えて投稿画面へ遷移するよ。</p>
+  <p>「更新」をクリックすると、新しい牌が表示されるよ。</p>
   <p>
   <%
   #{ "id", Paiクラスのインスタンス }というハッシュの作成
-  id_instance_hash = @ps.id.map.with_index {|id, i| [id, Pai.new(id, @ps.img[i])]}.to_h
+  id_instance_hash = id.map.with_index {|id, i| [id, Pai.new(id, @ps.img[i])]}.to_h
   %>
-  <% @ps.generate_random_id.each do |id| %>
+  <% generate_random_id.each do |id| %>
   <%= image_tag id_instance_hash[id].img %>
   <% end %>
 
@@ -14,7 +15,7 @@
 
   <div class="container">
     <%= form_tag('/ripai/after', :method => :post) do %>
-      <% @ps.selected_pais.each_with_index do |pai, index|%>
+      <% @selected_pais.each_with_index do |pai, index|%>
         <input name='ripai[selected_pais][<%= index %>]' type='hidden' value='<%= pai %>'>
       <% end %>
       <%= submit_tag '理牌', class: 'btn btn-primary' %>

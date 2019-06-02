@@ -16,7 +16,7 @@
       <td><%= link_to post.name, post_path(post) %></td>
       <td><%= post.description %></td>
       <td><% post.pais.split(',').each do |id| %>
-        <%= image_tag @ps.id2pai(id).img %>
+        <%= image_tag id2pai(id).img %>
       <% end %>
       </td>
       <td>
@@ -27,16 +27,3 @@
     <% end %>
   </tbody>
 </table>
-
-<div class="app-title navbar navbar-expand-md navbar-light bg-light">
-  <div class="navbar-brand">
-    Mahjong1
-  </div>
-
-</div>
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-</nav>
-<nav class="navbar navbar-dark bg-dark">
-  <a href="#" class="navbar-brand">Navbar</a>
-</nav>

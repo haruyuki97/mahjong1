@@ -1,16 +1,13 @@
 class PostsController < ApplicationController
   def index
-    @ps = PaisService.new
     @posts = Post.all
   end
 
   def show
-    @ps = PaisService.new
     @post = Post.find(params[:id])
   end
 
   def new
-    @ps = PaisService.new
     @post = Post.new
     @pais = params.require(:ripai)[:selected_pais]
   end
@@ -22,7 +19,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @ps = PaisService.new
     @post = Post.find(params[:id])
   end
 

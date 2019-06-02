@@ -1,5 +1,4 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<h1>編集する</h1>
 <%= form_with model: @post do |f| %>
 <p>
   <%= f.label :name %>
@@ -15,6 +14,6 @@
 <% end %>
 <% unless @post.pais.nil? %>
 <% @post.pais.split(',').each do |id| %>
-<%= image_tag @ps.id2pai(id).img %>
+<%= image_tag id2pai(id).img %>
 <% end %>
 <% end %>

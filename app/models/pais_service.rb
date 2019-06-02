@@ -70,6 +70,7 @@ class PaisService
       selected_pais << id_pais[i]
     end
     @selected_pais = selected_pais
+    @selected_pais
   end
 
   def id_instance_hash
