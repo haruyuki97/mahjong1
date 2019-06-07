@@ -72,6 +72,34 @@ module RipaiHelper
     end
     @selected_pais = selected_pais
   end
+  #1,9字牌が9枚確定という地獄
+  def generate_random_hell
+    yaochu_num_array = []
+
+    [1,9,10,18,19,27,28,29,30,31,32,33,34].each do |i|
+      k1 = i * 4 - 3 - 1
+      k2 = i * 4 - 1
+      (k1..k2).each do |k|
+        yaochu_num_array << k
+      end
+    end
+    all_pais_num = (0..135).to_a
+    yaochu_9num_array = yaochu_num_array.sample(9)
+
+    yaochu_9num_array.each do |i|
+      all_pais_num.delete i
+    end
+
+    a = all_pais_num.sample(5)
+
+    yaochu_9num_array.concat a
+
+    selected_pais = []
+    yaochu_9num_array.each do |i|
+      selected_pais << id_pais[i]
+    end
+    selected_pais
+  end
 end
 class Pai
   attr_accessor :id, :img

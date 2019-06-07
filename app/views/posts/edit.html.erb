@@ -12,8 +12,6 @@
   <%= f.submit nil, class: 'btn btn-primary' %>
 </p>
 <% end %>
-<% unless @post.pais.nil? %>
 <% @post.pais.split(',').each do |id| %>
 <%= image_tag id2pai(id).img %>
-<% end %>
 <% end %>

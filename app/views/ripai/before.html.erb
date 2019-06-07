@@ -1,11 +1,11 @@
 <div class = 'container'>
-  <h1>牌生成画面</h1>
+  <h1>牌生成ページ</h1>
   <p>「理牌」をクリックすると、牌を並べ替えて投稿画面へ遷移するよ。</p>
   <p>「更新」をクリックすると、新しい牌が表示されるよ。</p>
   <p>
   <%
-  #{ "id", Paiクラスのインスタンス }というハッシュの作成
-  id_instance_hash = id.map.with_index {|id, i| [id, Pai.new(id, @ps.img[i])]}.to_h
+  #{ "id" => Paiクラスのインスタンス }というハッシュの作成
+  id_instance_hash = id.map.with_index {|id, i| [id, Pai.new(id, img[i])]}.to_h
   %>
   <% generate_random_id.each do |id| %>
   <%= image_tag id_instance_hash[id].img %>
@@ -13,8 +13,10 @@
 
   </p>
 
+
+
   <div class="container">
-    <%= form_tag('/ripai/after', :method => :post) do %>
+    <%= form_with(url: '/ripai/after', method: :post, local: true) do %>
       <% @selected_pais.each_with_index do |pai, index|%>
         <input name='ripai[selected_pais][<%= index %>]' type='hidden' value='<%= pai %>'>
       <% end %>
@@ -32,7 +34,6 @@
     <% end %>
 
   </div>
-
 
 
 </div>

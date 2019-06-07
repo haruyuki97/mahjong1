@@ -5,7 +5,7 @@
 <% hand_pais << @pais[i.to_s] %>
 <% end %>
 <%
-hand_pais_instance_array = hand_pais.map{|id| @ps.id2pai id}
+hand_pais_instance_array = hand_pais.map{|id| id2pai id}
 hand_pais_instance_array.each do |pai|
 %>
 
@@ -14,7 +14,7 @@ hand_pais_instance_array.each do |pai|
 
 <% hand_pais_text = hand_pais.join(',') %>
 
-<%= form_with model: @post do |f| %>
+<%= form_with model: @post, local:true do |f| %>
 <p>
   <%= f.label :name %>
   <%= f.text_field :name%>
