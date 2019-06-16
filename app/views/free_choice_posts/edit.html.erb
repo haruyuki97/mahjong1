@@ -1,5 +1,5 @@
 <h1>編集する</h1>
-<%= form_with model: @post, local: true do |f| %>
+<%= form_with model: @free_choice_post, local: true do |f| %>
 <p>
   <%= f.label :name %>
   <%= f.text_field :name%>
@@ -12,6 +12,6 @@
   <%= f.submit nil, class: 'btn btn-primary' %>
 </p>
 <% end %>
-<% @post.pais.split(',').each do |id| %>
+<% @free_choice_post.pais.split(',').each do |id| %>
 <%= image_tag id2pai(id).img %>
 <% end %>

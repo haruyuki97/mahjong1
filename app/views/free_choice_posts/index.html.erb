@@ -1,6 +1,5 @@
-<h1>ランダム投稿一欄</h1>
-<%= link_to '投稿する', 'ripai/before', class: 'btn btn-success'%>
-
+<h1>自由投稿一覧</h1>
+<%= link_to '投稿する', new_free_choice_post_path, class: 'btn btn-success' %>
 <table class="table table-hover">
   <thead class="thead-default">
     <tr>
@@ -11,16 +10,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @posts.each do |post| %>
+    <% @free_choice_posts.each do |post| %>
     <tr>
-      <td><%= link_to post.name, post_path(post) %></td>
+      <td><%= link_to post.name, free_choice_post_path(post) %></td>
       <td><%= post.description %></td>
       <td><% post.pais.split(',').each do |id| %>
         <%= image_tag id2pai(id).img %>
       <% end %>
       </td>
       <td>
-        <%= link_to '編集', edit_post_path(post), class: 'btn btn-primary' %>
+        <%= link_to '編集', edit_free_choice_post_path(post), class: 'btn btn-primary' %>
         <%= link_to '削除', post, method: :delete, data: { confirm: "投稿「#{post.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger' %>
       </td>
     </tr>

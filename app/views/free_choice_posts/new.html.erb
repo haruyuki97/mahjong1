@@ -1,0 +1,31 @@
+<% id_instance_hash = id.map.with_index {|id, i| [id, Pai.new(id, img[i])]}.to_h %>
+<p>
+<% (0..13).each do |i| %>
+<%= image_tag 'none.png', id: "img#{i}" %>
+<% end %>
+</p>
+
+<a href="" >やり直す</a>
+
+
+<p>
+<% id_instance_hash.each do |key, value| %>
+<% img_src = "/assets/" + value.img %>
+<% if key == '1s' or key == '1p' or key == 'ton' %>
+<%= '<br>'.html_safe %>
+<% end %>
+<a href="javascript:void(0);" onclick="changePaiImage('<%= img_src %>');makePaisString('<%= value.id %>')"><%= image_tag value.img %></a>
+<% end %>
+</p>
+<%= form_with model: @free_choice_post, local: true do |f| %>
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control', id: 'free_choice_post_name' %>
+</div>
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, rows: 5, class: 'form-control', id: 'free_choice_post_description' %>
+</div>
+<%= f.hidden_field :pais, id: 'free_choice_post_pais' %>
+<%= f.submit nil, class: 'btn btn-primary' %>
+<% end %>

@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     comment = @post.comments.build(comment_params)
     comment.save!
-    redirect_to post_comments_path(params[:post_id])
+    redirect_to post_path(params[:post_id])
   end
 
 

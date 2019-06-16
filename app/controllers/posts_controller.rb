@@ -5,6 +5,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.all
+    #new機能で使うインスタンス変数
+    @comment = @post.comments.build
   end
 
   def new

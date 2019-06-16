@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :free_choice_posts
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

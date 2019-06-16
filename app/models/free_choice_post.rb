@@ -1,0 +1,2 @@
+class FreeChoicePost < ApplicationRecord
+end
