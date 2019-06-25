@@ -38,16 +38,17 @@ class PostsController < ApplicationController
   end
 
   def favorite
-    user = User.find(params[:favorite][:user_id])
-    post = Post.find(params[:favorite][:post_id])
+    @user = User.find(params[:favorite][:user_id])
+    @post = Post.find(params[:favorite][:post_id])
     is_favorite = params[:favorite][:is_favorite]
+
     if is_favorite == '0'
-      user.like(post)
+      @user.like(@post)
+      @status = 'like'
     else
-      user.unlike(post)
+      @user.unlike(@post)
+      @status = 'unlike'
     end
-    redirect_to posts_path
-    @favorites = user.favorites
   end
 
   private

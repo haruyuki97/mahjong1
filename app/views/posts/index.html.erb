@@ -24,21 +24,21 @@
         <%= link_to '編集', edit_post_path(post), class: 'btn btn-primary' %>
         <%= link_to '削除', post, method: :delete, data: { confirm: "投稿「#{post.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger' %>
         <% if current_user%>
-        <% if current_user.favpost?(post) %>
-          <%= form_with url: url_for(action: :favorite), method: :post, class: 'display-inline', local: true do |f| %>
-          <%= hidden_field_tag 'favorite[user_id]', current_user.id %>
-          <%= hidden_field_tag 'favorite[post_id]', post.id %>
-          <%= hidden_field_tag 'favorite[is_favorite]', 1 %>
-          <%= button_tag 'お気に入り済み', class: 'fa fa-star my-orange' %>
+          <% if current_user.favpost?(post) %>
+            <%= form_with url: url_for(action: :favorite), method: :post, class: 'display-inline' do |f| %>
+            <%= hidden_field_tag 'favorite[user_id]', current_user.id %>
+            <%= hidden_field_tag 'favorite[post_id]', post.id %>
+            <%= hidden_field_tag 'favorite[is_favorite]', 1, id: "is-favorite-#{post.id}" %>
+            <%= button_tag 'お気に入り済み', class: 'fa fa-star my-orange', id: "favorite-button-#{post.id}" %>
+            <% end %>
+          <% else %>
+            <%= form_with url: url_for(action: :favorite), method: :post, class: 'display-inline' do |f| %>
+            <%= hidden_field_tag 'favorite[user_id]', current_user.id %>
+            <%= hidden_field_tag 'favorite[post_id]', post.id %>
+            <%= hidden_field_tag 'favorite[is_favorite]', 0, id: "is-favorite-#{post.id}" %>
+            <%= button_tag 'お気に入りにする', class: 'fa fa-star', id: "favorite-button-#{post.id}" %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= form_with url: url_for(action: :favorite), method: :post, class: 'display-inline', local: true do |f| %>
-          <%= hidden_field_tag 'favorite[user_id]', current_user.id %>
-          <%= hidden_field_tag 'favorite[post_id]', post.id %>
-          <%= hidden_field_tag 'favorite[is_favorite]', 0 %>
-          <%= button_tag 'お気に入りにする', class: 'fa fa-star' %>
-          <% end %>
-        <% end %>
         <% end %>
       </td>
     </tr>

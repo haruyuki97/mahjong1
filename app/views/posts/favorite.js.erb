@@ -1,0 +1,7 @@
+<% if @status == 'like' %>
+  $("#is-favorite-<%= @post.id %>").attr('value', 1);
+  $("#favorite-button-<%= @post.id %>").text('お気に入り済み').addClass('my-orange');
+<% elsif @status == 'unlike' %>
+  $("#is-favorite-<%= @post.id %>").attr('value', 0);
+  $("#favorite-button-<%= @post.id %>").text('お気に入りにする').removeClass('my-orange');
+<% end %>

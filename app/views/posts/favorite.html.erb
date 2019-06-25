@@ -1,7 +1,0 @@
-<% @favorites.each do |f| %>
-<%= f.user.name %>
-
-<% f.post.pais.split(',').each do |id| %>
-  <%= image_tag id2pai(id).img %>
-<% end %>
-<%end%>
