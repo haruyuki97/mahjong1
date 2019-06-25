@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'favorite_posts/index', as: 'favorite_posts'
   resources :free_choice_posts
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

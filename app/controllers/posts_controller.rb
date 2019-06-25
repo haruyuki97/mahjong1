@@ -38,10 +38,16 @@ class PostsController < ApplicationController
   end
 
   def favorite
-    user = User.find(params[:user_id])
-    post = Post.find(params[:post_id])
-    user.like(post)
-    
+    user = User.find(params[:favorite][:user_id])
+    post = Post.find(params[:favorite][:post_id])
+    is_favorite = params[:favorite][:is_favorite]
+    if is_favorite == '0'
+      user.like(post)
+    else
+      user.unlike(post)
+    end
+    redirect_to posts_path
+    @favorites = user.favorites
   end
 
   private
@@ -49,6 +55,7 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:name, :description, :pais)
   end
+
 
 
 end

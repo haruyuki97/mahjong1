@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :favorites
   #将来的にUser has_many postsになった場合、名前がぶつかってしまうことを避ける。
-  has_many :fav_posts, through: :favorites, source: :posts
+  has_many :fav_posts, through: :favorites, source: :post
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
@@ -18,5 +18,9 @@ class User < ApplicationRecord
 
   def hello
     'hello!'
+  end
+
+  def  favpost?(post)
+   self.fav_posts.include?(post)
   end
 end
