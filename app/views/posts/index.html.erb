@@ -1,6 +1,7 @@
 <h1>ランダム投稿一欄</h1>
 <%= link_to '投稿する', 'ripai/before', class: 'btn btn-success'%>
 
+
 <table class="table table-hover">
   <thead class="thead-default">
     <tr>
@@ -22,6 +23,14 @@
       <td>
         <%= link_to '編集', edit_post_path(post), class: 'btn btn-primary' %>
         <%= link_to '削除', post, method: :delete, data: { confirm: "投稿「#{post.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger' %>
+        <%= link_to '', url_for(action: :favorite), class: 'fa fa-star my-yellow' %>
+        <% if current_user%>
+          <%= form_with url: url_for(action: :favorite), method: :post, local: true do |f| %>
+          <%= hidden_field_tag 'favorite[user_id]', current_user.id %>
+          <%= hidden_field_tag 'favorite[post_id]', post.id %>
+          <%= submit_tag '', class: 'fa fa-star my-yellow' %>
+          <% end %>
+        <% end %>
       </td>
     </tr>
     <% end %>

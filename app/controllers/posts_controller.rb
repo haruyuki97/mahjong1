@@ -37,9 +37,18 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: "投稿「#{post.name}」を削除しました。"
   end
 
+  def favorite
+    user = User.find(params[:user_id])
+    post = Post.find(params[:post_id])
+    user.like(post)
+    
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:name, :description, :pais)
   end
+
+
 end

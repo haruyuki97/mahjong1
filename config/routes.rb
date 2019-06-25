@@ -7,9 +7,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
+  # resources :postsより上に記入しないと、posts/:idに吸収される
+  get 'posts/favorite'
+  post 'posts/favorite'
+
   resources :posts do
     resources :comments
   end
+
 
   post 'posts/new'
   get 'ripai/before'

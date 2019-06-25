@@ -11,9 +11,9 @@
 <p>
 <% id_instance_hash.each do |key, value| %>
 <% img_src = "/assets/" + value.img %>
-<% if key == '1s' or key == '1p' or key == 'ton' %>
-<%= '<br>'.html_safe %>
-<% end %>
+<% if key == '1s' or key == '1p' or key == 'ton'
+    concat '<br>'.html_safe
+end %>
 <a href="javascript:void(0);" onclick="changePaiImage('<%= img_src %>');makePaisString('<%= value.id %>')"><%= image_tag value.img %></a>
 <% end %>
 </p>
