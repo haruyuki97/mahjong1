@@ -1,24 +1,61 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+https://ripai.herokuapp.com
+heroku上で動作します。
 
 * Ruby version
+2.5.1
+* 機能
+### ランダム投稿機能
 
-* System dependencies
+136個の麻雀牌の中から14個の牌をランダムに表示し、気に入ったものがあれば、名前と詳細を書き込んで投稿できます。
+投稿する際にランダムだった牌の並び順は、あらかじめ決められた順番に並び直されて保存されます。
 
-* Configuration
+保存の際は、String型のカラムにカンマで区切った各牌のIDを格納しています。
+例）'3m,4m,5m,6m,6m,6m,9m,1s,2s,9s,4p,5p,sha,haku'
 
-* Database creation
+投稿を編集、削除もできるので、CRUDは全て出来るようになっています。
+詳細画面では、その投稿についてのコメントを行えるようになっています。
 
-* Database initialization
+ここでは、
+Post has_many :comments
+の1対多のアソシエーションを宣言しています。
 
-* How to run the test suite
+### 自由投稿機能
 
-* Services (job queues, cache servers, search engines, etc.)
+34種類の牌の中から、ユーザーが好きな牌をクリックすることで好きな14個の牌を選び、名前と詳細を書き込んで投稿できます。
+jQueryで手牌のダミー画像をクリックした牌の画像に書き換えており、保存に必要な牌の文字列もhidden_fieldのvalueをjQueryで書き換えています。
 
-* Deployment instructions
+自由投稿機能に関してもCRUDは全てできます。
 
-* ...
+新規登録、ログイン機能
+
+新規登録とログインが行えます。
+ログインすると後述するお気に入り機能が使用できます。
+
+### お気に入り機能
+
+ユーザーがログインしていると、ランダム投稿の中から好きな投稿をお気に入りできます。
+お気に入りした投稿は「お気に入り投稿」で一覧表示しています。
+
+### posts#favoriteアクションではAjaxを使用
+
+「お気に入りにする」ボタンを押すとお気に入りにする処理が非同期で行われ、ボタンのスタイルが変化しテキストも「お気に入り済み」に変わります。
+「お気に入り済み」ボタンを押せば元に戻ります。
+
+モデルではUserモデルとPostモデルがFavoriteモデルを介して多対多の関連付けをされています。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+font-awesome-rails
